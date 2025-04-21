@@ -1,0 +1,9 @@
+---
+- name: stop the instance
+  hosts: all
+  become: true
+  tasks:
+    - name: condition to stop 
+      ansible.builtin.command: /sbin/shutdown -t now
+      when :
+        ansible_facts['os_family'] == "Debian"  
